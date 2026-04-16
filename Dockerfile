@@ -1,6 +1,8 @@
 FROM serversideup/php:8.4-fpm-nginx
 
 WORKDIR /var/www/html
+ENV AUTORUN_ENABLED=true
+ENV AUTORUN_LARAVEL_MIGRATION=true
 
 USER root
 
