@@ -9,5 +9,3 @@ echo "Waiting for MySQL..."
 until nc -z laravel-mysql 3306; do
   sleep 2
 done
-
-echo "Startup complete"
