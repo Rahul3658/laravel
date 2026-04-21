@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       digest:
-        description: "Image Digest"
+        description: "Image digest"
         required: true
         type: string
 
 permissions:
-  id-token: write
   contents: read
+  id-token: write
 
 jobs:
   sign:
