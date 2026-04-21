@@ -1,0 +1,25 @@
+name: Cosign Keyless Sign
+
+on:
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: "Image Digest"
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign Image
+        run: |
+          cosign sign --yes "${{ github.event.inputs.digest }}"
