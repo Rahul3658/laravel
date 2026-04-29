@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     image: laravel-vault-app
@@ -8,12 +6,16 @@ services:
     container_name: laravel-app
     restart: unless-stopped
     ports:
-     - "8083:8080"
+      - "8083:8080"
     networks:
       - laravel
     environment:
       VAULT_ADDR: ${VAULT_ADDR}
       VAULT_TOKEN: ${VAULT_TOKEN}
+      LOG_CHANNEL: single
+      LOG_LEVEL: debug
+    volumes:
+      - ./logs:/var/www/html/storage/logs
 
   mysql:
     image: mysql:8.0
